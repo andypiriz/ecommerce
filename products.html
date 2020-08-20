@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+      div#showPRODUCTS {
+        margin-top: 100px;
+
+      }
+      
+      
+    div#filtro {
+    float: right;
+    margin: auto;
+    width: auto;
+    padding: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: rgb(214, 28, 109);
+    border: 5px solid  rgb(70,101,47);
+      
+    }
+
+    div#orden {
+      float: left;
+      margin: auto;
+      width: auto;
+      padding: 25px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      background-color: rgb(214, 28, 109);
+      border: 5px solid  rgb(70,101,47);
+      
+    }
+
+
+      #filtarBTN {
+      padding-top: 2px;
+      padding-bottom: 1px;
+      background-color:  rgb(154, 203, 86);
+      border-color: rgb(42, 71, 1);
+      
+
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="site-header sticky-top py-1 bg-dark">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      </div>
+    </nav>
+    <div id="orden">
+      <form>
+        <p>Ordenar productos</p>
+        <select>
+          <option selected>Más relevantes</option>
+          <option>Menor precio</option>
+          <option>Mayor precio</option>
+        </select>
+      </form>
+    </div>
+    <div id="filtro">
+      <form action="">
+        <p>Filtar por precio</p>
+        <input type="text" name="numer" placeholder="Desde">
+        <input type="text" name="numer" placeholder="Hasta">
+        <input id="filtarBTN" type="submit" value="Filtar">
+
+      </form> 
+    </div>
+    <div class="container p-5" id="showPRODUCTS"></div>
+    <footer class="text-muted bg-light">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper"><div class="lds-ring"><div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/products.js"></script>
+  </body>
+</html>
