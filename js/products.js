@@ -1,27 +1,31 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-const ORDER_ASC_BY_COST = "De menor a mayor";
+const ORDER_ASC_BY_COST  = "De menor a mayor";
 const ORDER_DESC_BY_COST = "De mayor a menor";
-const ORDER_BY_PROD_REL = "Relevancia";
-var productsArray = [];
-var currentSortCriterio = undefined;
-var minCost = undefined;
-var maxCost = undefined;
+const ORDER_BY_PROD_REL  = "Relevancia";
+const ORDER_BY_SEARCH    = "según búsqueda";
+var currentSortCriterio  = undefined;
+var minCost              = undefined;
+var maxCost              = undefined;
 
 
 
 
-function showProductsList(array){
 
+// Muestro lo lista de productos
+function showProductsList(){
+    
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
         let product = currentProductsArray[i];
 
+        // Si el usuario no seleccionó mínimo o máximo muestro todos los artículos
         if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
 
         htmlContentToAppend += `
+        <a href="product-info.html" class="list-group-item list-group-item-action">
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
@@ -30,7 +34,7 @@ function showProductsList(array){
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">`+ product.name +`</h4>
-                        <small class="text-muted">` + product.soldCount + ` artículos</small>
+                        <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                     </div>
                     <div>`+ product.cost + ` `+ product.currency + `</div> 
                     <div>` + product.description + `</div>
@@ -38,6 +42,7 @@ function showProductsList(array){
                 </div>
             </div>
         </div>
+        </a>
         `
     }
 
@@ -45,6 +50,8 @@ function showProductsList(array){
     }
 }
 
+
+// Establezco los criterios para ordenar los productos
 function sortProducts(criterio, array){
     let result = [];
     if (criterio === ORDER_ASC_BY_COST)
@@ -65,15 +72,26 @@ function sortProducts(criterio, array){
             let aSold = parseInt(a.soldCount);
             let bSold = parseInt(b.soldCount);
 
-            if ( aSold < bSold ){ return -1; }
-            if ( aSold > bSold ){ return 1; }
+            if ( aSold > bSold ){ return -1; }
+            if ( aSold < bSold ){ return 1; }
             return 0;
+        });
+    }else if (criterio === ORDER_BY_SEARCH) {
+        let searchVALUE = document.getElementById("searchTXT").value.toUpperCase();
+        return array.filter(product => {
+            let productNAME = product.name.toUpperCase();
+            let productDESC = product.description.toUpperCase();
+
+            return productNAME.includes(searchVALUE) || productDESC.includes(searchVALUE)
         });
     }
 
     return result;
 }
 
+
+
+// Ordena y muestra los productos ordenados según el criterio seleccionado
 function sortAndShowProducts(sortCriterio, productsArray){
     currentSortCriterio = sortCriterio;
 
@@ -83,16 +101,21 @@ function sortAndShowProducts(sortCriterio, productsArray){
 
     currentProductsArray = sortProducts(currentSortCriterio, currentProductsArray);
 
-    //Muestro los productos ordenados
+    //Muestro los productos ordenados según el criterio elegido
     showProductsList();
 }
 
+
+// Hasta acá definí las funciones
+
+
+// Comienzo la parte de
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
-        }
-    });
+        } 
+    });// Automáticamente se muestra por orden de menor a mayor
 
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_ASC_BY_COST);
@@ -106,6 +129,11 @@ document.addEventListener("DOMContentLoaded", function(e){
         sortAndShowProducts(ORDER_BY_PROD_REL);
     });
 
+    document.getElementById("searchTXT").addEventListener("keyup", function(){
+        sortAndShowProducts(ORDER_BY_SEARCH);
+       
+    });
+
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCostMin").value = "";
         document.getElementById("rangeFilterCostMax").value = "";
@@ -117,8 +145,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCost").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
+        
         minCost = document.getElementById("rangeFilterCostMin").value;
         maxCost = document.getElementById("rangeFilterCostMax").value;
 
@@ -138,4 +166,8 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProductsList();
     });
+
+    
+    
+    
 });
