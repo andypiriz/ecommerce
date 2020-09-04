@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>Productos</title>
+    <title>eMercado-Productos</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -61,17 +61,7 @@
 
       }
 
-      .searchBTN {
-        float: right;
-        width: 37px;
-        height: 37px;
-        border-radius: 50%;
-        background: url(img/search.jpg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .searchTXT {
+      #searchTXT {
         border: none;
         background: none;
         outline: none;
@@ -82,6 +72,7 @@
         font-size: 16px;
         
       }
+
     </style>
   </head>
   <body>
@@ -92,25 +83,24 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" href="my-profile.html">Mi perfil</a>
+        <a id="perfil_usuario" class="py-2 d-none d-md-inline-block" href="my-profile.html">Mi perfil</a>
       </div>
     </nav>
     
     <div class="cont">
       <div class="searchBOX">
-        <input class="searchTXT" type="search" name="" placeholder="BUSCAR" >
-        <a class="searchBTN" href=""></a>
+        <input id="searchTXT" type="search" name="search" placeholder="&#128270;BUSCAR ARTÍCULO">
       </div>
-      <div class="row">
+       <div class="row">
           <div class="col text-right">
               <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                   <label class="btn btn-light active" id="sortAsc" >
                       <input type="radio" name="options" autocomplete="off" checked>
-                      <img src="img/hprice.png" title="De menor a mayor">
+                      <img src="img/hprice.png" title="Ascendente">
                   </label>
                   <label class="btn btn-light" id="sortDesc" >
                       <input type="radio" name="options" autocomplete="off">
-                      <img src="img/lprice.png" title="De mayor a menor">
+                      <img src="img/lprice.png" title="Descendente">
                   </label>
                   <label class="btn btn-light" id="sortBySoldCount" >
                       <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Relevancia
