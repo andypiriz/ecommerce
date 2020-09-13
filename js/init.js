@@ -47,8 +47,17 @@ if
 };
 
 
+
+//Guardar en sessioStorage el nombre del usuario
+var username = localStorage.getItem("nombre_usuario");
+  document.getElementById("perfil_usuario").innerHTML = username;
+
+
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 });
+
+
