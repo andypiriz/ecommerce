@@ -1,3 +1,4 @@
+
 var product = {};
 var num_stars = 1;
 
@@ -105,6 +106,8 @@ function addComment(event) {
 
 
 
+var products = {};
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -126,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCost.innerHTML         = product.cost;
             productCurrency.innerHTML     = product.currency;
             productCategory.innerHTML     = product.category;
+
 
             showImagesGallery(product.images);
 
@@ -160,4 +164,9 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
+
+            
+        }
+    });
+
 

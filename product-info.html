@@ -26,6 +26,7 @@
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
     }
+
     div#stars_rating {
       float: left;
     }
@@ -76,6 +77,9 @@
       font-size: 40px;
     
     }
+
+
+
   </style>
 </head>
 
@@ -99,6 +103,12 @@
     </div>
     <div>
       <dl>
+
+        <dt>ID:</dt>
+        <dd>
+          <p id="productID"></p>
+        </dd>
+
         <dt>Nombre:</dt>
         <dd>
           <p id="productName"></p>
@@ -119,6 +129,7 @@
         <dd>
           <p id="productCategory"></p>
         </dd>
+
         <dt>Imágenes ilustrativas</dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
@@ -142,6 +153,10 @@
       <button type="button" class="btn btn-success btn-number" onclick="add_star(num_stars);show_rating(num_stars)">+</button>
       <input type="submit" value="Enviar" id="commentBTN">
     </form>     
+
+      </dl>
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
