@@ -13,7 +13,34 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-</head>
+  <style>
+    body {
+      background-color: rgba(214, 28, 109, 0.37);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+
+    div.cont {
+    padding: 10px;
+    background-color: rgb(214, 28, 109);
+    border: 5px solid  rgb(70,101,47);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-left: 0%;
+
+    }
+
+    h2 {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+    }
+
+    h2:hover {
+      color: rgb(88, 4, 41);
+      font-size: 40px;
+    
+    }
+
+  </style>
 
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
@@ -27,13 +54,13 @@
     </div>
   </nav>
   <main role="main">
+    <div class="cont">
+      <h2>Descripción de la categoría</h2>
+      <p class="lead">Encontrarás aquí toda la información de la categoría seleccionada.</p>
+      <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea la categoría
+        seleccionada previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
+    </div>
     <div class="container mt-5">
-      <div class="text-center p-4">
-        <h2>Descripción de la categoría</h2>
-        <p class="lead">Encontrarás aquí toda la información de la categoría seleccionada.</p>
-        <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea la categoría
-          seleccionada previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
-      </div>
       <h3 id="categoryName"></h3>
       <hr class="my-3">
       <dl>
@@ -51,7 +78,6 @@
         <dd>
           <p id="productCriteria"></p>
         </dd>
-
         <dt>Imágenes ilustrativas</dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">

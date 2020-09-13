@@ -73,6 +73,17 @@
         
       }
 
+
+      h2 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+
+      h2:hover {
+        color: rgb(214, 28, 109);
+        font-size: 40px;
+      }
+
+
     </style>
   </head>
   <body>
@@ -89,7 +100,11 @@
     
     <div class="cont">
       <div class="searchBOX">
+
+        <input id="searchTXT" type="search" onkeyup="showProductsList()" placeholder="&#128270;BUSCAR ARTÍCULO">
+
         <input id="searchTXT" type="search" name="search" placeholder="&#128270;BUSCAR ARTÍCULO">
+
       </div>
        <div class="row">
           <div class="col text-right">

@@ -136,6 +136,15 @@ a.custom-card:hover {
   text-decoration: inherit;
 }
 
+.fa-star {
+  color: rgb(148, 52, 148);
+}
+
 .checked {
   color: orange;
+}
+
+
+.fa-star:hover {
+  color: gold;
 }
