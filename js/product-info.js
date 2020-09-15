@@ -1,4 +1,3 @@
-
 var product = {};
 var num_stars = 1;
 
@@ -28,7 +27,7 @@ function showImagesGallery(array){
 var userComment = localStorage.getItem("nombre_usuario");
   document.getElementById("userCom").innerHTML = userComment;
 
-
+function stars_score() {
 stars ="";
 for(let s=5; s>0; s--) {
   if(s > num_stars) {
@@ -37,6 +36,7 @@ for(let s=5; s>0; s--) {
     stars +=`<span class="fa fa-star checked float-right"></span>`
   }
   document.getElementById("stars_rating").innerHTML=stars;
+}
 }
 
 
@@ -103,10 +103,32 @@ function addComment(event) {
         document.getElementById("users").innerHTML += comment;
 }
 
+function relatedProducts(relatedProduct) {
+
+  getJSONData(PRODUCTS_URL).then(function(resultObj){
+      if (resultObj.status === "ok")
+      {
+          let htmlContentToAppend = "";
+          for(let i = 0; i < relatedProduct.length; i++){
+              let product = resultObj.data[relatedProduct[i]];
+                  htmlContentToAppend += ` 
+                  <a href = "product-info.html?name=`+ product.name + `" class="list-group-item list-group-item-action col-6">
+                  <img  src=" ` + product.imgSrc + `" class="img-thumbnail"> 
+                  <h3> ` + product.name + ` </h3>
+                  <p> ` + product.currency + ` ` +  product.cost + ` </p>
+
+                  </a>
+              `
+          }
+
+          document.getElementById('related_products').innerHTML = htmlContentToAppend;
+        };
+
+      });
+  }
 
 
 
-var products = {};
 
 
 
@@ -130,11 +152,12 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCurrency.innerHTML     = product.currency;
             productCategory.innerHTML     = product.category;
 
-
             showImagesGallery(product.images);
+            relatedProducts(resultObj.data.relatedProducts);
 
             
         }
+        
     });
 
     //Mostrar los comentarios que están en el JSON
@@ -152,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function(e){
               <img src="img/avatar.png" alt="Usuario" style="float: left; padding: 10px;">
               <p><b>Usuario: `+comment.user+`:</b></p>
               <p><b>Comentario:</b> `+comment.description+`</p>
-              <p><b>Calificación:</b> `+comment.score+` <i class="fas fa-star"></i></p>
+              <p><b>Calificación:</b> `+stars_score(comment.score)+` <i class="fa fa-star"></i></p>
               <p><b>Fecha:</b> `+comment.dateTime+`</p>
              <hr>
             `
@@ -162,11 +185,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
       }
     });
+    
+    
+    
+    
 
 });
-
-            
-        }
-    });
-
 

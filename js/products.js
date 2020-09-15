@@ -18,7 +18,6 @@ function showProductsList(){
     
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
-
         let product       = currentProductsArray[i];
         let searchProduct =document.getElementById("searchTXT").value.toLowerCase(); 
 
@@ -29,16 +28,6 @@ function showProductsList(){
 
         htmlContentToAppend += `
         <a href="product-info.html?`+ product.name +`" class="list-group-item list-group-item-action">
-
-        let product = currentProductsArray[i];
-
-        // Si el usuario no seleccionó mínimo o máximo muestro todos los artículos
-        if (((minCost == undefined) || (minCost != undefined && parseInt(product.cost) >= minCost)) &&
-            ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
-
-        htmlContentToAppend += `
-        <a href="product-info.html" class="list-group-item list-group-item-action">
-
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
@@ -57,18 +46,12 @@ function showProductsList(){
         </div>
         </a>
         `
-
         }
         
 
     
     }
     document.getElementById("showPRODUCTS").innerHTML = htmlContentToAppend;
-
-    }
-
-    document.getElementById("showPRODUCTS").innerHTML = htmlContentToAppend;
-    }
 }
 
 
@@ -92,47 +75,6 @@ function sortProducts(criterio, array){
         result = array.sort(function(a, b) {
             let aSold = parseInt(a.soldCount);
             let bSold = parseInt(b.soldCount);
-
-            if ( aSold > bSold ){ return -1; }
-            if ( aSold < bSold ){ return 1; }
-            return 0;
-        });
-    }else if (criterio === ORDER_BY_SEARCH) {
-        let searchVALUE = document.getElementById("searchTXT").value.toUpperCase();
-        return array.filter(product => {
-            let productNAME = product.name.toUpperCase();
-            let productDESC = product.description.toUpperCase();
-
-            return productNAME.includes(searchVALUE) || productDESC.includes(searchVALUE)
-        });
-    }
-
-    return result;
-
-}
-
-
-// Establezco los criterios para ordenar los productos
-function sortProducts(criterio, array){
-    let result = [];
-    if (criterio === ORDER_ASC_BY_COST)
-    {
-        result = array.sort(function(a, b) {
-            if ( a.cost < b.cost ){ return -1; }
-            if ( a.cost > b.cost ){ return 1; }
-            return 0;
-        });
-    }else if (criterio === ORDER_DESC_BY_COST){
-        result = array.sort(function(a, b) {
-            if ( a.cost > b.cost ){ return -1; }
-            if ( a.cost < b.cost ){ return 1; }
-            return 0;
-        });
-    }else if (criterio === ORDER_BY_PROD_REL){
-        result = array.sort(function(a, b) {
-            let aSold = parseInt(a.soldCount);
-            let bSold = parseInt(b.soldCount);
-
 
             if ( aSold > bSold ){ return -1; }
             if ( aSold < bSold ){ return 1; }
@@ -163,27 +105,6 @@ function sortAndShowProducts(sortCriterio, productsArray){
 // Hasta acá definí las funciones
 
 
-
-
-// Ordena y muestra los productos ordenados según el criterio seleccionado
-function sortAndShowProducts(sortCriterio, productsArray){
-    currentSortCriterio = sortCriterio;
-
-    if(productsArray != undefined){
-        currentProductsArray = productsArray;
-    }
-
-    currentProductsArray = sortProducts(currentSortCriterio, currentProductsArray);
-
-    //Muestro los productos ordenados según el criterio elegido
-    showProductsList();
-}
-
-
-// Hasta acá definí las funciones
-
-
-// Comienzo la parte de
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL).then(function(resultObj){
@@ -198,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     document.getElementById("sortDesc").addEventListener("click", function(){
         sortAndShowProducts(ORDER_DESC_BY_COST);
-
     });
 
     document.getElementById("sortBySoldCount").addEventListener("click", function(){
@@ -206,19 +126,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     
-
-    });
-
-    document.getElementById("sortBySoldCount").addEventListener("click", function(){
-        sortAndShowProducts(ORDER_BY_PROD_REL);
-    });
-
-    document.getElementById("searchTXT").addEventListener("keyup", function(){
-        sortAndShowProducts(ORDER_BY_SEARCH);
-       
-    });
-
-
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCostMin").value = "";
         document.getElementById("rangeFilterCostMax").value = "";
