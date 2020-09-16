@@ -20,6 +20,7 @@
 
       }
     div.cont {
+      margin-bottom: 5%;
       padding: 10px;
       background-color: rgb(214, 28, 109);
       border: 5px solid  rgb(70,101,47);
@@ -34,10 +35,9 @@
     form {
       float: left;
       text-align: left;
-      width: 40%;
-      margin-left: 5%;
-      padding-left: 5%;
-      padding: 3%;
+      width: 70%;
+      margin-left: 30%;
+      padding: 13%;
       background-color: rgb(189, 126, 153);
       border: 5px solid  rgb(70,101,47);
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -99,64 +99,71 @@
         <p class="lead">Aquí encontrarás toda la información del artículo seleccionado.</p>
       </div>
     </div>
-    <div class="col-md-4">
-      <dl>
-        <dt>Nombre:</dt>
-        <dd>
-          <p id="productName"></p>
-        </dd>
-        <dt>Descripción:</dt>
-        <dd>
-          <p id="productDescription"></p>
-        </dd>
-        <dt>Costo:</dt>
-        <dd>
-          <p id="productCost"></p>
-        </dd>
-        <dt>Moneda:</dt>
-        <dd>
-          <p id="productCurrency"></p>
-        </dd>
-        <dt>Categoría:</dt>
-        <dd>
-          <p id="productCategory"></p>
-        </dd>
-      </dl>
+    <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <dl>
+          <dt>Nombre:</dt>
+          <dd>
+            <p id="productName"></p>
+          </dd>
+          <dt>Descripción:</dt>
+          <dd>
+            <p id="productDescription"></p>
+          </dd>
+          <dt>Costo:</dt>
+          <dd>
+            <p id="productCost"></p>
+          </dd>
+          <dt>Moneda:</dt>
+          <dd>
+            <p id="productCurrency"></p>
+          </dd>
+          <dt>Categoría:</dt>
+          <dd>
+            <p id="productCategory"></p>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-sm">
+        <dl>
+          <dt>Productos relacionados</dt>
+          <dd>
+            <div class="row" id="related_products"></div>
+          </dd>
+        </dl>
+      </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-sm">
       <dl>
         <dt>Imágenes ilustrativas</dt>
         <dd>
-          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          <div class="row" id="productImagesGallery">
           </div>
         </dd>
       </dl>
     </div>
-    <div class="col-md-4">
-      <dl>
-        <dt>Productos relacionados</dt>
-        <dd>
-          <div id="related_products"></div>
-        </dd>
-      </dl>
+    <div class="row">
+        <div class="col-sm">
+          <h5>Comentarios</h5>
+        <div id="users"></div>
+        </div>
+        <div class="col-sm">
+          <form onsubmit="addComment(event)">
+            <h5>Ingresar comentario:</h5>
+            <p><b>Usuario:</b></p>
+            <p id="userCom"></p>
+            <p><b>Comentario:</b></p>
+            <textarea id="opinion" name="comment" placeholder="Ingrese su comentario"></textarea><br>
+            <p id="productRating"><b>Calificación:</b></p>
+            <button type="button" class="btn btn-danger btn-number" onclick="take_star(num_stars);show_rating(num_stars)">-</button>
+            <div id="stars_rating"></div>
+            <button type="button" class="btn btn-success btn-number" onclick="add_star(num_stars);show_rating(num_stars)">+</button>
+            <input type="submit" value="Enviar" id="commentBTN">
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-    <h5>Comentarios</h5>
-    <div id="users"></div>
-    </div>
-  <div class="row align-items-end">
-    <form onsubmit="addComment(event)">
-      <p><b>Usuario:</b></p>
-      <p id="userCom"></p>
-      <p><b>Comentario:</b></p>
-      <textarea id="opinion" name="comment" placeholder="Ingrese su comentario"></textarea><br>
-      <p id="productRating"><b>Calificación:</b></p>
-      <button type="button" class="btn btn-danger btn-number" onclick="take_star(num_stars);show_rating(num_stars)">-</button>
-      <div id="stars_rating"></div>
-      <button type="button" class="btn btn-success btn-number" onclick="add_star(num_stars);show_rating(num_stars)">+</button>
-      <input type="submit" value="Enviar" id="commentBTN">
-    </form>
-  </div>>
   </main>
   <footer class="text-muted">
     <div class="container">

@@ -23,6 +23,33 @@ function showImagesGallery(array){
 }
 
 
+//Muestra los productos relacionados
+function relatedProducts(relatedProduct) {
+
+  getJSONData(PRODUCTS_URL).then(function(resultObj){
+      if (resultObj.status === "ok")
+      {
+          let htmlContentToAppend = "";
+          for(let i = 0; i < relatedProduct.length; i++){
+              let product = resultObj.data[relatedProduct[i]];
+                  htmlContentToAppend += ` 
+                  <a href = "product-info.html?name=`+ product.name + `" class="list-group-item list-group-item-action col-6">
+                  <img  src=" ` + product.imgSrc + `" class="img-thumbnail"> 
+                  <h3> ` + product.name + ` </h3>
+                  <p> ` + product.currency + ` ` +  product.cost + ` </p>
+
+                  </a>
+              `
+          }
+
+          document.getElementById('related_products').innerHTML = htmlContentToAppend;
+        };
+
+      });
+  }
+
+
+
 // Mostar el nombre del usuario actual en la sección de comentar
 var userComment = localStorage.getItem("nombre_usuario");
   document.getElementById("userCom").innerHTML = userComment;
@@ -99,33 +126,9 @@ function addComment(event) {
           <p><b>Fecha:</b> `+todayDate+`</p>
           <hr>
         `
-        
-        document.getElementById("users").innerHTML += comment;
+      document.getElementById("users").innerHTML += comment;
 }
 
-function relatedProducts(relatedProduct) {
-
-  getJSONData(PRODUCTS_URL).then(function(resultObj){
-      if (resultObj.status === "ok")
-      {
-          let htmlContentToAppend = "";
-          for(let i = 0; i < relatedProduct.length; i++){
-              let product = resultObj.data[relatedProduct[i]];
-                  htmlContentToAppend += ` 
-                  <a href = "product-info.html?name=`+ product.name + `" class="list-group-item list-group-item-action col-6">
-                  <img  src=" ` + product.imgSrc + `" class="img-thumbnail"> 
-                  <h3> ` + product.name + ` </h3>
-                  <p> ` + product.currency + ` ` +  product.cost + ` </p>
-
-                  </a>
-              `
-          }
-
-          document.getElementById('related_products').innerHTML = htmlContentToAppend;
-        };
-
-      });
-  }
 
 
 
@@ -166,8 +169,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             product = resultObj.data;
             let htmlContentToAppend = "";
+            
             for(let i = 0; i < product.length; i++){
             let comment = product[i];
+            
            
                 
             htmlContentToAppend += `
@@ -175,10 +180,11 @@ document.addEventListener("DOMContentLoaded", function(e){
               <img src="img/avatar.png" alt="Usuario" style="float: left; padding: 10px;">
               <p><b>Usuario: `+comment.user+`:</b></p>
               <p><b>Comentario:</b> `+comment.description+`</p>
-              <p><b>Calificación:</b> `+stars_score(comment.score)+` <i class="fa fa-star"></i></p>
+              <p><b>Calificación:</b> `+comment.score+` <i class="fa fa-star"></i></p>
               <p><b>Fecha:</b> `+comment.dateTime+`</p>
              <hr>
             `
+          stars_score();
 
          document.getElementById("users").innerHTML = htmlContentToAppend;
           

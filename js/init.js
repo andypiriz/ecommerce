@@ -48,16 +48,42 @@ if
 
 
 
-//Guardar en sessioStorage el nombre del usuario
-var username = localStorage.getItem("nombre_usuario");
-  document.getElementById("perfil_usuario").innerHTML = username;
 
+function logout(e){
+  sessionStorage.removeItem('logueado');
+  localStorage.removeItem("nombre_usuario");
+  window.location.href = 'index.html';
+}
 
+function dropdownField() {
+  //Guardar en sessioStorage el nombre del usuario
+  var username = localStorage.getItem("nombre_usuario");
+  
+  let htmlContentToAppend = `
+    <div class="btn group">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">` +username+`
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+        <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+        <a class="dropdown-item" onclick="logout()" href="#">Cerrar Sesión</a>
+      </div>
+    </div>
+    `;
+    document.getElementById("listField").innerHTML = htmlContentToAppend;
+
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  if(sessionStorage.getItem('logueado')){
+    let dropField = document.createElement("div");
+    dropField.id  = "listField";
+    document.querySelector("nav.site-header").lastElementChild.appendChild(dropField);
+    dropdownField();
+  }
 });
 
 
