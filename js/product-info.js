@@ -2,26 +2,27 @@ var product = {};
 var num_stars = 1;
 
 
-//Mostrar imágenes del producto
-function showImagesGallery(array){
-
+//Mostrar imágenes del producto en un carrusel
+function showImagesGallery(array) {
   let htmlContentToAppend = "";
 
-  for(let i = 0; i < array.length; i++){
-      let imageSrc = array[i];
-
-      htmlContentToAppend += `
-      <div class="col-lg-3 col-md-4 col-6">
-          <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+  for (let i = 0; i < array.length; i++) {
+      if (i == 0) {                             
+          htmlContentToAppend += ` 
+          <div class="carousel-item active">
+              <img class="d-block w-100" src="` + array[i] + `" > 
+          </div> 
+          `
+      } else {
+          htmlContentToAppend += `
+          <div class="carousel-item">
+              <img class="d-block w-100" src="` + array[i] + `">
           </div>
-      </div>
-      `
-
-      document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+          `
+      }
   }
+  document.getElementById("Caruzel").innerHTML = htmlContentToAppend;
 }
-
 
 //Muestra los productos relacionados
 function relatedProducts(relatedProduct) {
@@ -108,7 +109,6 @@ function addComment(event) {
 
   let comment = "";
   var today = new Date();
-
   var todayDate = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
   comment = `
           <h4><b>Su comentario:</b></h4>

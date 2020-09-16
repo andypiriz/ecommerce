@@ -61,7 +61,7 @@ function dropdownField() {
   
   let htmlContentToAppend = `
     <div class="btn group">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">` +username+`
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">` +username+`
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="cart.html">Mi Carrito</a>
@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     dropField.id  = "listField";
     document.querySelector("nav.site-header").lastElementChild.appendChild(dropField);
     dropdownField();
+    document.querySelector("body > nav > div > a:nth-child(5)").remove();
   }
 });
 
