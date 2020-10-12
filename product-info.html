@@ -15,23 +15,25 @@
   <link href="css/styles.css" rel="stylesheet">
   <style>
     body {
-        background-color: rgba(214, 28, 109, 0.37);
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      background-color: rgba(214, 28, 109, 0.37);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
-      }
+    }
+
     div.cont {
       margin-bottom: 5%;
       padding: 10px;
       background-color: rgb(214, 28, 109);
-      border: 5px solid  rgb(70,101,47);
+      border: 5px solid rgb(70, 101, 47);
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
     }
+
     div#stars_rating {
       float: left;
     }
 
-   
+
     form {
       float: left;
       text-align: left;
@@ -39,7 +41,7 @@
       margin-left: 30%;
       padding: 13%;
       background-color: rgb(189, 126, 153);
-      border: 5px solid  rgb(70,101,47);
+      border: 5px solid rgb(70, 101, 47);
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
 
@@ -47,36 +49,30 @@
       margin: 3px;
       padding-top: 2px;
       padding-bottom: 1px;
-      background-color:  rgb(154, 203, 86);
+      background-color: rgb(154, 203, 86);
       border-color: rgb(42, 71, 1);
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
     }
 
-    h5 {
-      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    }
+   h5 {
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      
 
-    h5:hover {
-      color: rgb(214, 28, 109);
-      font-size: x-large;
     }
-
 
     dl {
       margin-left: 3%;
     }
 
-    
+
     h2 {
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
     h2:hover {
-      color:  rgb(88, 4, 41);
-      font-size: 40px;
-    
+      color: rgb(88, 4, 41);
+      
     }
   </style>
 </head>
@@ -99,64 +95,64 @@
       </div>
     </div>
     <div class="container">
-    <div class="row">
-      <div class="col-sm">
+      <div class="row">
+        <div class="col-sm">
+          <dl>
+            <dt>Nombre:</dt>
+            <dd>
+              <p id="productName"></p>
+            </dd>
+            <dt>Descripción:</dt>
+            <dd>
+              <p id="productDescription"></p>
+            </dd>
+            <dt>Costo:</dt>
+            <dd>
+              <p id="productCost"></p>
+            </dd>
+            <dt>Moneda:</dt>
+            <dd>
+              <p id="productCurrency"></p>
+            </dd>
+            <dt>Categoría:</dt>
+            <dd>
+              <p id="productCategory"></p>
+            </dd>
+          </dl>
+        </div>
+        <div class="col-sm-3 col-md-6 ">
+          <dl>
+            <dt>Imágenes ilustrativas del producto: </dt></br>
+            <dd>
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" id="theCarousel"></div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <hr>
+      <div class="col-sm-9 col-md-6">
         <dl>
-          <dt>Nombre:</dt>
+          <dt>También te puede interesar: </dt>
           <dd>
-            <p id="productName"></p>
-          </dd>
-          <dt>Descripción:</dt>
-          <dd>
-            <p id="productDescription"></p>
-          </dd>
-          <dt>Costo:</dt>
-          <dd>
-            <p id="productCost"></p>
-          </dd>
-          <dt>Moneda:</dt>
-          <dd>
-            <p id="productCurrency"></p>
-          </dd>
-          <dt>Categoría:</dt>
-          <dd>
-            <p id="productCategory"></p>
+            <div class="row" id="related_products"></div>
           </dd>
         </dl>
       </div>
-      <div class="col-sm-3 col-md-6 ">
-        <dl>
-          <dt>Imágenes ilustrativas</dt>
-          <dd>
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner" id="Caruzel"></div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </dd>
-        </dl>
-      </div>
-    </div>
-    <hr>
-    <div class="col-sm-9 col-md-6">
-      <dl>
-        <dt>Productos relacionados</dt>
-        <dd>
-          <div class="row" id="related_products"></div>
-        </dd>
-      </dl>
-    </div>
-    <hr>
-    <div class="row">
+      <hr>
+      <div class="row">
         <div class="col-sm">
           <h5>Comentarios</h5>
-        <div id="users"></div>
+          <div id="users"></div>
         </div>
         <div class="col-sm">
           <form onsubmit="addComment(event)">
@@ -166,9 +162,11 @@
             <p><b>Comentario:</b></p>
             <textarea id="opinion" name="comment" placeholder="Ingrese su comentario"></textarea><br>
             <p id="productRating"><b>Calificación:</b></p>
-            <button type="button" class="btn btn-danger btn-number" onclick="take_star(num_stars);show_rating(num_stars)">-</button>
+            <button type="button" class="btn btn-danger btn-number"
+              onclick="take_star(num_stars);show_rating(num_stars)">-</button>
             <div id="stars_rating"></div>
-            <button type="button" class="btn btn-success btn-number" onclick="add_star(num_stars);show_rating(num_stars)">+</button>
+            <button type="button" class="btn btn-success btn-number"
+              onclick="add_star(num_stars);show_rating(num_stars)">+</button>
             <input type="submit" value="Enviar" id="commentBTN">
           </form>
         </div>
@@ -187,7 +185,7 @@
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
-      <div></div> 
+      <div></div>
       <div></div>
       <div></div>
     </div>

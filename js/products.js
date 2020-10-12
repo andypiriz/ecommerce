@@ -27,7 +27,7 @@ function showProductsList(){
             product.name.toLowerCase().includes(searchProduct)){
 
         htmlContentToAppend += `
-        <a href="product-info.html?`+ product.name +`" class="list-group-item list-group-item-action">
+        <a href="product-info.html?product=`+ product.name +`" class="list-group-item list-group-item-action">
         <div class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
@@ -102,7 +102,7 @@ function sortAndShowProducts(sortCriterio, productsArray){
 }
 
 
-// Hasta acá definí las funciones
+//------HASTA ACÁ DEFINÍ LAS FUNCIONES------
 
 
 

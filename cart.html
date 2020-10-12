@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -26,6 +27,39 @@
         font-size: 3.5rem;
       }
     }
+    
+    
+    div#cont {
+      background-color: rgba(214, 28, 109, 0.37);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    }
+
+  
+
+    img#carrito {
+      margin-right: 5%;
+      float: left;
+    }
+
+    img#imgProd {
+      margin-right: 5%;
+      float: right;
+    }
+
+    h5 {
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    }
+
+    div#almostTotal {
+      text-align: center;
+      background-color: rgb(189, 126, 153);
+      border: 5px solid rgb(70, 101, 47);
+    }
+
+    
+  
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -42,12 +76,47 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container" id="cont">
+    <h5><b>DETALLE DE SU COMPRA:</b></h5>
+    <img id="carrito" src="img/carro.png">
+    <div id="cartField" class="row"></div>
+    <form action="" id="sendProduct">
+    <div class="form-row">
+      <div class="col">
+        <h5>ENVÍO:</h5>
+        <img id="carrito" src="img/enviar.png">
+      </div>
+      <div class="col">
+        <p><b>Dirección:</b></p><input type="text" placeholder="Coloque su dirección&#127969;" maxlength="40">
+      </div>
+      <div class="col">
+        <p><b>País:</b></p><input type="text" placeholder="Coloque su país &#127757;" maxlength="40">
+      </div>
+      <div class="col">
+      <p><b>Seleccione un tipo de envío:</b></p>
+        <select required>
+            <option value="0" selected>*Seleccione el tipo de envío* &#128663;</option>
+            <option value="1">Standard(12-15 días)</option>
+            <option value="2">Express(5-8 días)</option>
+            <option value="3">Premium(2-5 días)</option>
+        </select>
+      </div>
+    </div>
+    </form>
+    <hr>
+    <form action="" id="payProduct">
+      <h5>MÉTODO DE PAGO:</h5>
+      <p><img src="img/tarjeta.png" alt="Pagar con tarjeta"><b>Tarjeta de crédito:</b> <input type="radio" name="pago" value="p1" required></p></br>
+      <p><img src="img/transferencia.png" alt="Pagar con transferencia"><b>Transferencia Bancaria:</b> <input type="radio" name="pago" value="p2" required></p>
+    </form>
+    <div id="almostTotal">
+      <p><b>Importe Total:</b></p>
+      <div id="casiTotal"></div>
+      <div>
+        <p id="result"></p>
+      </div>
+      <a href="products.html" class="btn btn-danger btn-number">Volver al sitio</a>
+      <button type="button" class="btn btn-success btn-number" onclick="">Finalizar compra</button>
     </div>
   </div>
   <div id="spinner-wrapper">
