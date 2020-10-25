@@ -34,7 +34,7 @@
     }
 
 
-    form {
+    form#commentForm {
       float: left;
       text-align: left;
       width: 70%;
@@ -119,6 +119,11 @@
               <p id="productCategory"></p>
             </dd>
           </dl>
+          <form action="cart.html" class="">
+            <img src="img/carro.png" alt="Agregar al carrito"><br>
+            <button  type="button" class="btn btn-primary" onclick="alert('Agregado al carrito')">Agregar al carrito</button>
+            <button  type="submit" class="btn btn-primary">Ir al carrito</button>
+          </form>
         </div>
         <div class="col-sm-3 col-md-6 ">
           <dl>
@@ -155,7 +160,7 @@
           <div id="users"></div>
         </div>
         <div class="col-sm">
-          <form onsubmit="addComment(event)">
+          <form id="commentForm" onsubmit="addComment(event)">
             <h5>Ingresar comentario:</h5>
             <p><b>Usuario:</b></p>
             <p id="userCom"></p>

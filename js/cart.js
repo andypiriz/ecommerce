@@ -9,7 +9,7 @@ function showCart(array) {
                 let article = array[i];
                 
                 htmlContentToAppend += `
-                    <div class="container">
+                    <div id="productBox" class="container">
                     <div class="row">
                     <div class = "col-sm">
                     <img  id="imgProd" src=" ` + article.src + `" class="img-fluid img-thumbnail" width="200">
@@ -27,17 +27,23 @@ function showCart(array) {
 
             }
             document.getElementById("cartField").innerHTML = htmlContentToAppend;
-            subtotalCost();
+    subtotalCost();
+    
 }
 
 // Obtener el subtotal de los artículos que están en el carrito.
 function subtotalCost() {
+    
+    let finalTotal = 0;
     let almostTotal = 0;
     let sub = document.getElementsByClassName("subTotal"); // Especifico donde voy a colocar el resultado del subtotal
     let count = document.getElementsByClassName("productCount");// Especifico de dónde voy a obtener el dato de la cantidad de productos
+    let send = document.getElementById("sendProduct").value;
     
     for (let i = 0; i < cart.length; i++) {
-        let result;
+        let result; // Resultado del subtotal
+        let result2; // Resultado del total final 
+        
         let cost = cart[i].unitCost;// Variable que contiene el costo unitario de los productos.
         cart[i].count = count[i].value;// Variable que contiene el value del input de la cantidad de productos.
         
@@ -47,14 +53,39 @@ function subtotalCost() {
         } else {
             result = cost * cart[i].count;
         }
-        // Agrega el subtotal al html, especificando con un string la moneda del subtotal, que en este caso va a ser pesos.
-        sub[i].innerHTML = result + " UYU";
-        almostTotal += result;
+
         
+        
+        sub[i].innerHTML = result + " UYU"; // Agrega el subtotal al html
+        almostTotal += result; 
+
+        
+        // Calcula el precio de envío según el porcentaje seleccionado.
+        if (send == 1) {
+            result2 = result + (result * 0.05); // Satndard
+        } else if (send == 2) {
+            result2 = result + (result * 0.07); // Express
+        } else if (send == 3) {
+            result2 = result + (result * 0.15); // Premium
+        } else {
+            result2 = result;
+        }
+
+        finalTotal += result2;
+    
         
     }
     document.getElementById("casiTotal").innerHTML = almostTotal;// Agrega el total al html.
+    document.getElementById("finalTotal").innerHTML = finalTotal;
+    
 }
+
+
+
+
+
+
+
 
 
 
@@ -67,7 +98,7 @@ function subtotalCost() {
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(CART_INFO_URL_2).then(function (resultObj) {
         if (resultObj.status === "ok") {
-         cart = resultObj.data.articles;
+            cart = resultObj.data.articles;
 
 
             showCart(cart);
@@ -84,5 +115,25 @@ document.addEventListener("DOMContentLoaded", function (e) {
         
         }
 
+        document.getElementById("cardPayment").addEventListener("click", function () {
+            document.getElementById("accountNum").removeAttribute("required");
+            document.getElementById("cardExpDate").setAttribute("required", "");
+            document.getElementById("cardCVV").setAttribute("required", "");
+            document.getElementById("cardNum").setAttribute("required", "");
+           
+            
+        });
+        
+        document.getElementById("transferPayment").addEventListener("click", function () {
+            document.getElementById("cardExpDate").removeAttribute("required");
+            document.getElementById("cardCVV").removeAttribute("required");
+            document.getElementById("cardNum").removeAttribute("required");
+            document.getElementById("accountNum").setAttribute("required", "");
+            
+        });
+
+        
+
+    
     });
 });

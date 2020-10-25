@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         htmlContentToAppend += `
                  
-              <img src="img/avatar.png" alt="Usuario" style="float: left; padding: 10px;">
+              <img src="img/hablar.png" alt="Usuario" style="float: left; padding: 10px;">
               <p><b>Usuario: ` + comment.user + `:</b></p>
               <p><b>Comentario:</b> ` + comment.description + `</p>
               <p><b>Calificación:</b> ` + comment.score + `  <i class="fas fa-star"></i></p>
