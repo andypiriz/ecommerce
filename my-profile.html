@@ -11,26 +11,10 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/my-profile.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,15 +27,39 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container fluid">
+    <div class="">
+        <h5 class="">SU PERFIL DE USUARIO:</h5>
+        <img src="img/perfil_de_usuario.png" alt="Su perfil de usuario">
+      </div>
+    <div class="row">
+      <div id="userNewData">
+      </div>
+      <div id="userDataEmptyForm" class="col">
+       <p><b>Nombre:</b></p>
+        <p id="name"></p>
+        <p><b>Edad:</b></p>
+        <p id="age"></p>
+        <p><b>Email:</b></p>
+        <p id="email"></p>
+        <p><b>Teléfono de contacto:</b></p>
+        <p id="phone"></p>
+      </div>
+      <div class="col" id="editProfileField"></div>
     </div>
+    <div>
+      <input type="image" src="img/recargar.png" title="Recargar" id="removeData" onclick="removeUserData(), showUserDataUpd()">
+    </div>
+    <hr>
+    <div class="col">
+      <h5 class="">EDITAR PERFIL:</h5>
+      <img src="img/editar.png" alt="editar perfil de usuario">
+      <p><b>Si desea editar su perfil haga click en el botón de editar</b></p>
+      <button type="submit" class="BTN" id="editProfileBTN">Editar perfil</button>
+    </div>
+    <hr>
   </div>
-  <footer class="text-muted bg-light">
+<footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>

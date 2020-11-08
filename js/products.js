@@ -27,29 +27,23 @@ function showProductsList(){
             product.name.toLowerCase().includes(searchProduct)){
 
         htmlContentToAppend += `
-        <a href="product-info.html?product=`+ product.name +`" class="list-group-item list-group-item-action">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name +`</h4>
+                <div class="col-12 col-md-4 mb-4">
+                <a href="product-info.html?product=`+ product.name +`">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
+                        <h4 class="card-title"><b>`+ product.name +`</b></h4>
+                        <p><b>`+ product.currency + ` ` + product.cost + `</b></p>
+                        <p>` + product.description + `</p>
                         <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                     </div>
-                    <div>`+ product.cost + ` `+ product.currency + `</div> 
-                    <div>` + product.description + `</div>
-
                 </div>
-            </div>
-        </div>
-        </a>
+                </a>
+                </div>
+            
+        
         `
         }
-        
-
-    
     }
     document.getElementById("showPRODUCTS").innerHTML = htmlContentToAppend;
 }
